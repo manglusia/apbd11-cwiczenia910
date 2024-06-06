@@ -13,21 +13,23 @@ public class ApplicationContext : DbContext
     {
     }
 
-    public DbSet<Author> Authors { get; set; }
-    public DbSet<Book> Books { get; set; }
-    public DbSet<Edition> Editions { get; set; }
-    public DbSet<Award> Awards { get; set; }
-    public DbSet<BookAward> BookAwards { get; set; }
+    public DbSet<Medicament> Medicaments { get; set; } = null!;
+    public DbSet<Prescription> Prescriptions { get; set; } = null!;
+    public DbSet<Doctor> Doctors { get; set; } = null!;
+    public DbSet<Patient> Patients { get; set; } = null!;
+    public DbSet<PrescriptionMedicament> PrescriptionMedicaments { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<PrescriptionMedicament>().HasKey(pm => new { pm.IdMedicament, pm.IdPrescription });
         
-        modelBuilder.Entity<Author>().HasData(new List<Author>()
-        {
-            new() { Id = 1, FirstName = "John", LastName = "Doe"},
-            new() { Id = 2, FirstName = "Ann", LastName = "Smith"},
-            new() { Id = 3, FirstName = "Jack", LastName = "Taylor"}
-        });
+        modelBuilder.Entity<Medicament>().ToTable("Medicaments");
+        modelBuilder.Entity<Prescription>().ToTable("Prescriptions");
+        modelBuilder.Entity<PrescriptionMedicament>().ToTable("PrescriptionMedicaments");
+        modelBuilder.Entity<Doctor>().ToTable("Doctors");
+        modelBuilder.Entity<Patient>().ToTable("Patients");
+
     }
 }

@@ -12,6 +12,5 @@ public class DatabaseContext : DbContext
     public DatabaseContext(DbContextOptions options) : base(options)
     {
     }
-
-    public DbSetor<Author> Authors { set; get; }
+    
 }
