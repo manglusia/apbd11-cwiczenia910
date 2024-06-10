@@ -112,17 +112,13 @@ public class PrescriptionsController : ControllerBase
                 {
                     IdDoctor = p.Doctor.IdDoctor,
                     FirstName = p.Doctor.FirstName,
-                    LastName = p.Doctor.LastName,
-                    Email = p.Doctor.Email
                 },
                 Medicaments = p.PrescriptionMedicaments.Select(pm=> new MedicamentResponse
                 {
                     IdMedicament = pm.Medicament.IdMedicament,
                     Name = pm.Medicament.Name,
                     Description = pm.Medicament.Description,
-                    Type = pm.Medicament.Type,
                     Dose = pm.Dose,
-                    Details = pm.Details
                 }).ToList()
             }).ToList()
         };
