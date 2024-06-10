@@ -100,12 +100,14 @@ public class ApplicationContext : DbContext
         {
             new Patient
             {
+                IdPatient = 1,
                 BirthDate = DateTime.Parse("26.08.2004"),
                 FirstName = "Klaus",
                 LastName = "Nowak"
             },
             new Patient
             {
+                IdPatient = 2,
                 BirthDate = DateTime.Parse("6-07-2010"),
                 FirstName = "Michał",
                 LastName = "Truba"
